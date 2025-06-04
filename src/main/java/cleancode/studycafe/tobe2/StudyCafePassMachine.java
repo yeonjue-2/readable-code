@@ -1,12 +1,12 @@
 package cleancode.studycafe.tobe2;
 
-import cleancode.studycafe.tobe.exception.AppException;
-import cleancode.studycafe.tobe.io.InputHandler;
-import cleancode.studycafe.tobe.io.OutputHandler;
-import cleancode.studycafe.tobe.io.StudyCafeFileHandler;
-import cleancode.studycafe.tobe.model.StudyCafeLockerPass;
-import cleancode.studycafe.tobe.model.StudyCafePass;
-import cleancode.studycafe.tobe.model.StudyCafePassType;
+import cleancode.studycafe.tobe2.exception.AppException;
+import cleancode.studycafe.tobe2.io.InputHandler;
+import cleancode.studycafe.tobe2.io.OutputHandler;
+import cleancode.studycafe.tobe2.io.StudyCafeFileHandler;
+import cleancode.studycafe.tobe2.model.StudyCafeLockerPass;
+import cleancode.studycafe.tobe2.model.StudyCafePass;
+import cleancode.studycafe.tobe2.model.StudyCafePassType;
 
 import java.util.List;
 
