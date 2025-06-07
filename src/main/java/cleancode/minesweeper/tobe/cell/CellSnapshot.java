@@ -17,23 +17,27 @@ public class CellSnapshot {
     }
 
     public static CellSnapshot ofEmpty() {
-        return new CellSnapshot(CellSnapshotStatus.EMPTY, 0);
+        return of(CellSnapshotStatus.EMPTY, 0);
     }
 
     public static CellSnapshot ofFlag() {
-        return new CellSnapshot(CellSnapshotStatus.FLAG, 0);
+        return of(CellSnapshotStatus.FLAG, 0);
     }
 
     public static CellSnapshot ofLandMine() {
-        return new CellSnapshot(CellSnapshotStatus.LAND_MINE, 0);
+        return of(CellSnapshotStatus.LAND_MINE, 0);
     }
 
     public static CellSnapshot ofNumber(int nearbyLandMineCount) {
-        return new CellSnapshot(CellSnapshotStatus.NUMBER, nearbyLandMineCount);
+        return of(CellSnapshotStatus.NUMBER, nearbyLandMineCount);
     }
 
     public static CellSnapshot ofUnChecked() {
-        return new CellSnapshot(CellSnapshotStatus.UNCHECKED, 0);
+        return of(CellSnapshotStatus.UNCHECKED, 0);
+    }
+
+    public boolean isSameStatus(CellSnapshotStatus cellSnapshotStatus) {
+        return status == cellSnapshotStatus;
     }
 
     public CellSnapshotStatus getStatus() {

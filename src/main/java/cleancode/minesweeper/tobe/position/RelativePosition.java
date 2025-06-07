@@ -42,10 +42,10 @@ public class RelativePosition {
     }
 
     public int getDeltaRow() {
-        return this.deltaRow;
+        return deltaRow;
     }
 
     public int getDeltaCol() {
-        return this.deltaCol;
+        return deltaCol;
     }
 }

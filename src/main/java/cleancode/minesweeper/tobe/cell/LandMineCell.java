@@ -43,6 +43,6 @@ public class LandMineCell implements Cell {
 
     @Override
     public boolean isOpened() {
-        return cellState.isFlagged();
+        return cellState.isOpened();
     }
 }

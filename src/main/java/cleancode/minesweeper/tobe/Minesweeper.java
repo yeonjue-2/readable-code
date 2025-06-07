@@ -77,7 +77,6 @@ public class Minesweeper implements GameInitializable, GameRunnable {
         }
 
         throw new GameException("잘못된 번호를 선택하셨습니다.");
-
     }
 
     private void chaneGameStatusToLose() {

@@ -35,7 +35,7 @@ public class CellPositions {
     public List<CellPosition> extractRandomPositions(int count) {
         List<CellPosition> cellPositions = new ArrayList<>(positions);
 
-        Collections.shuffle(positions);
+        Collections.shuffle(cellPositions);
         return cellPositions.subList(0, count);
     }
 
