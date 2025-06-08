@@ -58,6 +58,6 @@ public class StudyCafePass {
     }
 
     public boolean cannotUserLocker() {
-        return !this.passType.isNotLockerType();
+        return this.passType.isNotLockerType();
     }
 }
