@@ -17,7 +17,6 @@ public class GameConfig {
     }
 
     public GameLevel getGameLevel() {
-
         return gameLevel;
     }
 
