@@ -1,11 +1,15 @@
 package cleancode.minesweeper.tobe.minesweeper.board;
 
 import cleancode.minesweeper.tobe.minesweeper.board.cell.Cell;
+import cleancode.minesweeper.tobe.minesweeper.board.cell.CellSnapshot;
+import cleancode.minesweeper.tobe.minesweeper.board.cell.EmptyCell;
 import cleancode.minesweeper.tobe.minesweeper.board.position.CellPosition;
 import cleancode.minesweeper.tobe.minesweeper.gamelevel.Advanced;
 import cleancode.minesweeper.tobe.minesweeper.gamelevel.VeryBeginner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Field;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -41,6 +45,56 @@ class GameBoardTest {
     }
 
     @Test
-    void getSnapshot() {
+    @DisplayName("getSnapshot() - 열리지 않은 EmptyCell은 UnChecked 반환")
+    void getSnapshot_unopenedEmptyCell_returnsUnChecked() throws Exception {
+        // given
+        EmptyCell cell = new EmptyCell();
+        GameBoard gameBoard = createGameBoardWithCell(cell);
+
+        // when
+        CellSnapshot snapshot = gameBoard.getSnapshot(CellPosition.of(0, 0));
+
+        // then
+        assertThat(snapshot).isEqualTo(CellSnapshot.ofUnChecked());
+    }
+
+    @Test
+    @DisplayName("getSnapshot() flag된 EmptyCell은 Flag 반환")
+    void getSnapshot_flaggedEmptyCell_returnsFlag() throws Exception {
+        // given
+        EmptyCell cell = new EmptyCell();
+        cell.flag();
+        GameBoard gameBoard = createGameBoardWithCell(cell);
+
+        // when
+        CellSnapshot snapshot = gameBoard.getSnapshot(CellPosition.of(0, 0));
+
+        // then
+        assertThat(snapshot).isEqualTo(CellSnapshot.ofFlag());
+    }
+
+    @Test
+    @DisplayName("getSnapshot() open된 EmptyCell은 Empty 반환")
+    void getSnapshot_openedEmptyCell_returnsEmpty() throws Exception {
+        // given
+        EmptyCell cell = new EmptyCell();
+        cell.open();
+        GameBoard gameBoard = createGameBoardWithCell(cell);
+
+        // when
+        CellSnapshot snapshot = gameBoard.getSnapshot(CellPosition.of(0, 0));
+
+        // then
+        assertThat(snapshot).isEqualTo(CellSnapshot.ofEmpty());
+    }
+
+    private GameBoard createGameBoardWithCell(Cell cell) throws Exception {
+        GameBoard gameBoard = new GameBoard(new VeryBeginner());
+
+        Field boardField = GameBoard.class.getDeclaredField("board");
+        boardField.setAccessible(true);
+        boardField.set(gameBoard, new Cell[][]{{cell}});  // 원하는 셀로 넣어줌
+
+        return gameBoard;
     }
 }
